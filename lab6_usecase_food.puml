@@ -1,0 +1,30 @@
+@startuml
+left to right direction
+title Диаграмма вариантов использования. Онлайн-доставка еды
+
+actor "Клиент" as Client
+actor "Курьер" as Courier
+actor "Ресторан" as Rest
+actor "Платёжная система" as PaySys
+
+rectangle "Онлайн-доставка еды" {
+  usecase "Открыть меню ресторана" as UC1
+  usecase "Оформить заказ" as UC2
+  usecase "Оплатить заказ" as UC3
+  usecase "Отследить статус доставки" as UC4
+  usecase "Принять и передать заказ" as UC5
+  usecase "Подтвердить готовность заказа" as UC6
+  usecase "Обработать платёж" as UC7
+}
+
+Client --> UC1
+Client --> UC2
+Client --> UC3
+Client --> UC4
+Courier --> UC4
+Courier --> UC5
+Rest --> UC6
+PaySys --> UC7
+UC2 ..> UC3 : <<include>>
+UC4 ..> UC2 : <<include>>
+@enduml

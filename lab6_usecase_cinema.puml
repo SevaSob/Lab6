@@ -1,0 +1,30 @@
+@startuml
+left to right direction
+title Диаграмма вариантов использования. Онлайн-кинотеатр
+
+actor "Зритель" as User
+actor "Администратор" as Admin
+actor "Платёжная система" as PaySys
+actor "Кинотеатр (внешняя система)" as Cinema
+
+rectangle "Онлайн-кинотеатр" {
+  usecase "Выбрать фильм" as UC1
+  usecase "Оформить подписку" as UC2
+  usecase "Смотреть фильм" as UC3
+  usecase "Управлять каталогом" as UC4
+  usecase "Управлять учётными записями" as UC5
+  usecase "Сформировать сеансы" as UC6
+  usecase "Обработать платёж" as UC7
+}
+
+User --> UC1
+User --> UC2
+User --> UC3
+Admin --> UC4
+Admin --> UC5
+Admin --> UC6
+PaySys --> UC7
+Cinema --> UC6
+UC3 ..> UC2 : <<include>>
+UC2 ..> UC7 : <<include>>
+@enduml
